@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,8 +64,9 @@ class UserController extends AbstractController{
         $user->setLastName($lastName);
         $user->setEmail($email);
 
-        $this->hasher->hashPassword($user,$password);
-
+        $password =$this->hasher->hashPassword($user,$password);
+        $user->setPassword($password);
+        
         $manager->persist($user);
         $manager->flush();
 

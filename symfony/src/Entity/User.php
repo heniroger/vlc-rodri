@@ -4,12 +4,14 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity()
  * @ORM\Table(name="app_user", options={"comment":""})
  */
-class User{
+class User implements UserInterface{
 
      /**
      * @var int
@@ -35,7 +37,7 @@ class User{
     private $email;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $password;
     /**
@@ -53,6 +55,15 @@ class User{
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
+
+      /**
+     * @var array
+     * @ORM\Column(type="json", nullable=true,length=255)
+     */
+    private $roles=[];
+
+    private $username;
+
     
 
     public function __construct()
@@ -251,5 +262,47 @@ class User{
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+      /**
+     * Get the value of roles
+     */
+    public function getRoles()
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * Set the value of roles
+     *
+     * @return  self
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+      public function getUserIdentifier()
+    {
+
+        return $this->email;
+    }
+
+    public function getSalt()
+    {
+        return '';
+    }
+    public function eraseCredentials()
+    {
+        return null;
+    }
+    public function getUsername()
+    {
+        return $this->email;
     }
 }

@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="app_user", options={"comment":""})
+ * @ORM\Table(name="app_car", options={"comment":""})
  */
 class Car{
 
@@ -30,7 +31,7 @@ class Car{
     private $mark;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=10000)
      */
     private $description;
     
