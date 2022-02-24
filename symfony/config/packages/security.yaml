@@ -7,14 +7,11 @@ security:
     providers:
         users_in_memory: { memory: null }
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         login:
-            pattern: ^/api/login
+            pattern: ^/api/auth
             stateless: true
             json_login:
-                check_path: /api/authenticationCheck
+                check_path: /api/authCheck
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
@@ -22,6 +19,9 @@ security:
             pattern:   ^/api
             stateless: true
             jwt: ~
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         main:
             lazy: true
             provider: users_in_memory
@@ -37,7 +37,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api/auth, roles: PUBLIC_ACCESS }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
