@@ -10,7 +10,7 @@ const NavBar = () => {
         {/* Navbar */}
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li className="nav-item dropdown">
-            <a
+            <span
               className="nav-link dropdown-toggle"
               id="navbarDropdown"
               role="button"
@@ -18,22 +18,28 @@ const NavBar = () => {
               aria-expanded="false"
             >
               <i className="fas fa-user fa-fw"></i>
-            </a>
+            </span>
             <ul
               className="dropdown-menu dropdown-menu-end"
               aria-labelledby="navbarDropdown"
             >
               <li>
-                <a className="dropdown-item">Settings</a>
+                <a href="/" className="dropdown-item">
+                  Settings
+                </a>
               </li>
               <li>
-                <a className="dropdown-item">Activity Log</a>
+                <a href="/" className="dropdown-item">
+                  Activity Log
+                </a>
               </li>
               <li>
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <a className="dropdown-item">Logout</a>
+                <a href="/" className="dropdown-item">
+                  Logout
+                </a>
               </li>
             </ul>
           </li>
