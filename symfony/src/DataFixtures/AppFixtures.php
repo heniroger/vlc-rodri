@@ -38,9 +38,9 @@ class AppFixtures extends Fixture{
             for($j=0; $j < 10; $j++){
 
                 $car = new Car();
-
+                $marks =["Toyota","Nissan","Mutsibushi","Ferrari", "Lamborghini","Mercedes"];
                 $car->setPhoto("https://via.placeholder.com/350x150");
-                $car->setMark($faker->text(20));
+                $car->setMark(ucwords($marks[array_rand($marks)])." ".$faker->text(5));
                 $car->setDescription($faker->text(1000));
                 $car->setCreator($user);
 

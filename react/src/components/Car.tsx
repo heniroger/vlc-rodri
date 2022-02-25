@@ -1,4 +1,5 @@
 import { CarEntity } from "../services/Entity";
+import { Comment } from "./Comment";
 
 const Car = (props: CarEntity) => {
   return (
@@ -10,13 +11,14 @@ const Car = (props: CarEntity) => {
           <p className="card-text">{props.description}</p>
           <p className="card-text">
             <small className="text-muted">
-              Ajouté le {props.createdAt} par{" "}
+              Ajouté le {props.createdAt} par
               <b>
                 {props.owner.firstName} {props.owner.lastName}
               </b>
             </small>
           </p>
         </div>
+        <Comment />
       </div>
     </>
   );
