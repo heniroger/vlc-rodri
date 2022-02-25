@@ -96,6 +96,10 @@ class CarController extends AbstractController{
                     if($comment instanceof Comment){
                         $aCar['comments'][] = [
                             'content' => $comment->getContent(),
+                            'user' => [
+                                'firstName' => $comment->getUser()->getFirstName(),
+                                'lastName' => $comment->getUser()->getLastName(),
+                            ],
                             'createdAt' => $comment->getCreatedAt()->format('Y-m-d H:i:s'),
                         ];
                     }

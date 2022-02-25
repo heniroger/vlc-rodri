@@ -4,7 +4,7 @@ export interface CarEntity{
     photo: string;
     mark: string;
     description: string;
-    comments: string;
+    comments: CommentEntity[];
     createdAt: string;
     owner: any;
 }
@@ -19,7 +19,7 @@ export interface UserEntity{
 export interface CommentEntity{
     id:number
     content: string;
-    car: any;
-    user:any;
+    car?: any;
+    user?:any;
     createdAt?: string;
 }

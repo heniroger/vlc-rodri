@@ -43,3 +43,7 @@ body{
   .navbar-expand {
     justify-content: space-between;
   }
+
+  .car{
+    background-color: #f8f9fa;
+  }
