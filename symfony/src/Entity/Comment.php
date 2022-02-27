@@ -6,7 +6,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  * @ORM\Table(name="app_comment", options={"comment":""})
  */
 class Comment{
@@ -21,18 +21,18 @@ class Comment{
     private $id;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length="255")
      */
     private $content;
      /**
      * @var Car
-     * @ORM\ManyToOne(targetEntity="Car", inversedBy="comments", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="comments", cascade={"persist"})
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
      /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="users", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

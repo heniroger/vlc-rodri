@@ -1,4 +1,34 @@
+import { useState } from "react";
+import { userRegister } from "../services/AuthService";
+
 export const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const submitForm = (e: any) => {
+    e.preventDefault();
+
+    const registeredUser = userRegister({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log(registeredUser);
+
+    return undefined;
+  };
+
   return (
     <>
       <div id="layoutAuthentication">
@@ -23,6 +53,8 @@ export const Register = () => {
                                 id="inputFirstName"
                                 type="text"
                                 placeholder="Enter your first name"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
                               />
                               <label htmlFor="inputFirstName">First name</label>
                             </div>
@@ -34,6 +66,8 @@ export const Register = () => {
                                 id="inputLastName"
                                 type="text"
                                 placeholder="Enter your last name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
                               />
                               <label htmlFor="inputLastName">Last name</label>
                             </div>
@@ -45,6 +79,8 @@ export const Register = () => {
                             id="inputEmail"
                             type="email"
                             placeholder="name@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <label htmlFor="inputEmail">Email address</label>
                         </div>
@@ -56,6 +92,8 @@ export const Register = () => {
                                 id="inputPassword"
                                 type="password"
                                 placeholder="Create a password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                               <label htmlFor="inputPassword">Password</label>
                             </div>
@@ -67,6 +105,10 @@ export const Register = () => {
                                 id="inputPasswordConfirm"
                                 type="password"
                                 placeholder="Confirm password"
+                                value={confirmPassword}
+                                onChange={(e) =>
+                                  setConfirmPassword(e.target.value)
+                                }
                               />
                               <label htmlFor="inputPasswordConfirm">
                                 Confirm Password
@@ -76,12 +118,13 @@ export const Register = () => {
                         </div>
                         <div className="mt-4 mb-0">
                           <div className="d-grid">
-                            <a
+                            <button
                               className="btn btn-primary btn-block"
-                              href="login.html"
+                              type="button"
+                              onClick={(e) => submitForm(e)}
                             >
                               Create Account
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </form>

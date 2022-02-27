@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="app_user", options={"comment":""})
  */
 class User implements UserInterface{
@@ -22,32 +22,32 @@ class User implements UserInterface{
     private $id;
     /**
      * @var string
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length="50")
      */
     private $firstName;
     /**
      * @var string
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length="50")
      */
     private $lastName;
     /**
      * @var string
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length="150")
      */
     private $email;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255,nullable=true)
+     * @ORM\Column(type="string", length="255",nullable=true)
      */
     private $password;
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
      */
     private $comments;
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Car", mappedBy="creator")
+     * @ORM\OneToMany(targetEntity="App\Entity\Car", mappedBy="creator")
      */
     private $cars;
     /**
@@ -56,12 +56,16 @@ class User implements UserInterface{
      */
     private $createdAt;
 
-      /**
+    /**
      * @var array
-     * @ORM\Column(type="json", nullable=true,length=255)
+     * @ORM\Column(type="json", nullable=true,length="255")
      */
-    private $roles=[];
+    private $roles=["USER"];
 
+      /**
+     * @var string
+     * @ORM\Column(type="string", length="150",nullable=true)
+     */
     private $username;
 
     
@@ -301,8 +305,26 @@ class User implements UserInterface{
     {
         return null;
     }
+
+    /**
+     * Get the value of username
+     */ 
     public function getUsername()
     {
-        return $this->email;
+        $this->username = $this->email;
+
+        return $this->username;
+    }
+
+    /**
+     * Set the value of username
+     *
+     * @return  self
+     */ 
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
     }
 }

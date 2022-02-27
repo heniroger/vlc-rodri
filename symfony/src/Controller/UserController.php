@@ -50,6 +50,7 @@ class UserController extends AbstractController{
 
         $manager = $this->managerRegistry->getManager();
 
+
         $user = $this->em->getRepository(User::class)->findOneBy(['email' , $email]);
 
         if($user){

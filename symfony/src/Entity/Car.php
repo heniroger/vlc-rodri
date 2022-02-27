@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\CarRepository")
  * @ORM\Table(name="app_car", options={"comment":""})
  */
 class Car{
@@ -21,28 +21,28 @@ class Car{
     private $id;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length="255")
      */
     private $photo;
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length="255")
      */
     private $mark;
     /**
      * @var string
-     * @ORM\Column(type="string", length=10000)
+     * @ORM\Column(type="string", length="10000")
      */
     private $description;
     
      /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="car")
      */
     private $comments;
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="cars", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="cars", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $creator;
