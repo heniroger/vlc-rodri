@@ -74,7 +74,12 @@ class CarController extends AbstractController{
     public function list(){
 
     
-        $cars = $this->em->getRepository(Car::class)->findAll();
+        $cars = $this->em->createQueryBuilder()
+                                    ->select('c1')
+                                    ->from('App:Car','c1')
+                                    ->orderBy('c1.id','DESC')
+                                    ->getQuery()->getResult()
+                                    ;
 
         $data = [];
 

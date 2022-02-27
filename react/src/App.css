@@ -45,5 +45,16 @@ body{
   }
 
   .car{
-    background-color: #f8f9fa;
+    background-color: #DCDCDC;
+  }
+
+  .card-comment{
+    border: none;
+    border-radius: 7%;
+    margin-bottom: 1%;
+    background-color: white;
+  }
+
+  .card-comment  .card-title{
+    color: darkblue;
   }
