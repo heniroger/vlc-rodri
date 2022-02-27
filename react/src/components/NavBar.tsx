@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Home } from "./Home";
 import { Login } from "./Login";
 import { Register } from "./Register";
 
@@ -7,10 +8,9 @@ const NavBar = () => {
     <Router>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         {/* Navbar Brand */}
-        <a className="navbar-brand ps-3" href="index.html">
+        <Link to="/" className="navbar-brand ps-3">
           Start Bootstrap
-        </a>
-
+        </Link>
         {/* Navbar */}
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li className="nav-item dropdown">
@@ -52,8 +52,9 @@ const NavBar = () => {
         </ul>
       </nav>
       <Routes>
-        <Route path="/login" element={Login} />
-        <Route path="/register" element={Register} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );

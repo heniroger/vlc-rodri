@@ -21,5 +21,9 @@ export const CarItems = (props: CarItemProps) => {
     );
   });
 
-  return <>{elements}</>;
+  return (
+    <>
+      <div className="container me-4">{elements}</div>
+    </>
+  );
 };
