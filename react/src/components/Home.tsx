@@ -5,6 +5,7 @@ import { CarItems } from "./CartItems";
 
 export const Home = () => {
   const [cars, setCars] = useState<CarEntity[]>([]);
+  const [loadCars, setLoadCars] = useState(false);
 
   useEffect(() => {
     getCars().then((response) => {
@@ -13,9 +14,16 @@ export const Home = () => {
     });
   }, []);
 
+  useEffect(() => {
+    getCars().then((response) => {
+      const { data } = response.data;
+      return setCars(data);
+    });
+  }, [loadCars]);
+
   return (
     <>
-      <CarItems cars={cars} />
+      <CarItems cars={cars} refreshCars={setLoadCars} />
     </>
   );
 };

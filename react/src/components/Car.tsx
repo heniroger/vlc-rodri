@@ -1,10 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import { CarEntity } from "../services/Entity";
 import { CommentForm } from "./CommentForm";
 import { CommentItems } from "./CommentItems";
 
 const Car = (props: CarEntity) => {
   const comments = props.comments;
+  const [refreshComments, setRefreshCommets] = useState(false);
 
+  useEffect(() => {
+    props.refreshCars(true);
+  }, [refreshComments]);
   return (
     <>
       <div className="card mb-3 col-md-9 car">
@@ -23,7 +29,7 @@ const Car = (props: CarEntity) => {
         </div>
 
         <CommentItems comments={comments} />
-        <CommentForm />
+        <CommentForm cartId={props.id} refreshComments={setRefreshCommets} />
       </div>
     </>
   );

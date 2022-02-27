@@ -7,6 +7,7 @@ export interface CarEntity{
     comments: CommentEntity[];
     createdAt: string;
     owner: any;
+    refreshCars: Function;
 }
 export interface UserEntity{
     id:number

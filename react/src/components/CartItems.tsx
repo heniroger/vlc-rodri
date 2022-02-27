@@ -1,11 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Car from "./Car";
 import { CarEntity } from "../services/Entity";
+import { useEffect, useState } from "react";
 
 export interface CarItemProps {
   cars: CarEntity[];
+  refreshCars: Function;
 }
 
 export const CarItems = (props: CarItemProps) => {
+  const [refreshCarItems, setRefreshCarItems] = useState(false);
+
+  useEffect(() => {
+    props.refreshCars(true);
+  }, [refreshCarItems]);
+
   const elements = props.cars.map((car: any, index: number) => {
     return (
       <Car
@@ -17,6 +26,7 @@ export const CarItems = (props: CarItemProps) => {
         createdAt={car.createdAt}
         comments={car.comments}
         owner={car.owner}
+        refreshCars={setRefreshCarItems}
       />
     );
   });
