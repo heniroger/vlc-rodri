@@ -1,7 +1,7 @@
 import AppAxiosInstance from "./AxiosInstance";
 
 
-export const authenticationCheck = async (data:any) => {
+export const authenticationCheck = async (data: any) => {
     return await AppAxiosInstance.post('/api/authCheck',{ username: data.email, password: data.password});
 }
 

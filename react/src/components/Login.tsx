@@ -1,4 +1,23 @@
+import { useState } from "react";
+import { authenticationCheck } from "../services/AuthService";
+
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleOnSubmit = (e: any) => {
+    e.preventDefault();
+    const getLogin = authenticationCheck({ email: email, password: password })
+      .then((response) => {
+        localStorage.setItem("tokenData", response.data);
+        window.document.location.href = "/";
+      })
+      .catch((error) => {
+        alert(error);
+        window.document.location.href = "/";
+        console.log(error);
+      });
+  };
   return (
     <>
       <div id="layoutAuthentication">
@@ -21,6 +40,8 @@ export const Login = () => {
                             id="inputEmail"
                             type="email"
                             placeholder="name@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <label htmlFor="inputEmail">Email address</label>
                         </div>
@@ -30,6 +51,8 @@ export const Login = () => {
                             id="inputPassword"
                             type="password"
                             placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                           <label htmlFor="inputPassword">Password</label>
                         </div>
@@ -51,9 +74,13 @@ export const Login = () => {
                           <a className="small" href="password.html">
                             Forgot Password?
                           </a>
-                          <a className="btn btn-primary" href="index.html">
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick={(e) => handleOnSubmit(e)}
+                          >
                             Login
-                          </a>
+                          </button>
                         </div>
                       </form>
                     </div>
