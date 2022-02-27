@@ -1,6 +1,10 @@
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Login } from "./Login";
+import { Register } from "./Register";
+
 const NavBar = () => {
   return (
-    <>
+    <Router>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         {/* Navbar Brand */}
         <a className="navbar-brand ps-3" href="index.html">
@@ -24,15 +28,17 @@ const NavBar = () => {
               aria-labelledby="navbarDropdown"
             >
               <li>
-                <a href="/" className="dropdown-item">
-                  Settings
-                </a>
+                <Link to="/login" className="dropdown-item">
+                  Login
+                </Link>
               </li>
+
               <li>
-                <a href="/" className="dropdown-item">
-                  Activity Log
-                </a>
+                <Link to="/register" className="dropdown-item">
+                  Register
+                </Link>
               </li>
+
               <li>
                 <hr className="dropdown-divider" />
               </li>
@@ -45,7 +51,12 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
-    </>
+      <Routes>
+        <Route path="/login" element={Login} />
+
+        <Route path="/register" element={Register} />
+      </Routes>
+    </Router>
   );
 };
 

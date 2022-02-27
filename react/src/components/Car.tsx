@@ -4,15 +4,14 @@ import { CommentForm } from "./CommentForm";
 
 const Car = (props: CarEntity) => {
   const comments = props.comments;
-  const commentItems = comments.map((comment) => {
+  const commentItems = comments.map((comment, index) => {
     return (
-      <>
-        <Comment
-          id={comment.id}
-          content={comment.content}
-          user={comment.user}
-        />
-      </>
+      <Comment
+        id={comment.id}
+        key={index}
+        content={comment.content}
+        user={comment.user}
+      />
     );
   });
   return (
@@ -32,7 +31,7 @@ const Car = (props: CarEntity) => {
           </p>
         </div>
 
-        {commentItems}
+        <div>{commentItems}</div>
         <CommentForm />
       </div>
     </>
