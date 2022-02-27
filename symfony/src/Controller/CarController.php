@@ -87,6 +87,7 @@ class CarController extends AbstractController{
             if($car instanceof Car){
 
                 $aCar = [
+                    'id' => $car->getId(),
                     'photo' => $car->getPhoto(),
                     'mark' => $car->getMark(),
                     'description' => $car->getDescription(),

@@ -29,7 +29,7 @@ const Car = (props: CarEntity) => {
         </div>
 
         <CommentItems comments={comments} />
-        <CommentForm cartId={props.id} refreshComments={setRefreshCommets} />
+        <CommentForm carId={props.id} refreshComments={setRefreshCommets} />
       </div>
     </>
   );

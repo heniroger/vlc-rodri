@@ -16,6 +16,7 @@ export const CarItems = (props: CarItemProps) => {
   }, [refreshCarItems]);
 
   const elements = props.cars.map((car: any, index: number) => {
+    console.log(car);
     return (
       <Car
         id={car.id}

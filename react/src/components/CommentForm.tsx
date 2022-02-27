@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { addNewCommentToCar } from "../services/CarService";
 
 export const CommentForm = (props: {
-  cartId: number;
+  carId: number;
   refreshComments: Function;
 }) => {
   const [content, setContent] = useState("");
@@ -15,7 +15,7 @@ export const CommentForm = (props: {
   const handleOnSubmit = (e: any) => {
     e.preventDefault();
     const commentedCar = addNewCommentToCar({
-      id: props.cartId,
+      id: props.carId,
       content: content,
     })
       .then((response) => {

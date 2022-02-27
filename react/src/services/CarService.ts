@@ -18,7 +18,7 @@ export const addNewCar = async(data:any) => {
 
 
 export const addNewCommentToCar = async(data:any) => {
-    return await AppAxiosInstance.post('/api/cars/' + data.id, {
+    return await AppAxiosInstance.post('/api/cars/' + data.id+'/comment', {
         content: data.content
     },
      getConfig(data.token)

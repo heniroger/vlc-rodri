@@ -25,6 +25,8 @@ api_car_list:
     methods: ['GET']
 
 api_car_add_comment:
-    path: /api/cars/:id/comment
+    path: /api/cars/{id}/comment
     controller: App\Controller\CarController::addComment
     methods: ['POST']
+    requirements:
+        id: '\d+'
