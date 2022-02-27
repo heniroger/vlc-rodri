@@ -17,9 +17,9 @@ export const Register = () => {
                       <form>
                         <div className="row mb-3">
                           <div className="col-md-6">
-                            <div className="htmlForm-floating mb-3 mb-md-0">
+                            <div className="form-floating mb-3 mb-md-0">
                               <input
-                                className="htmlForm-control"
+                                className="form-control"
                                 id="inputFirstName"
                                 type="text"
                                 placeholder="Enter your first name"
@@ -28,9 +28,9 @@ export const Register = () => {
                             </div>
                           </div>
                           <div className="col-md-6">
-                            <div className="htmlForm-floating">
+                            <div className="form-floating">
                               <input
-                                className="htmlForm-control"
+                                className="form-control"
                                 id="inputLastName"
                                 type="text"
                                 placeholder="Enter your last name"
@@ -39,9 +39,9 @@ export const Register = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="htmlForm-floating mb-3">
+                        <div className="form-floating mb-3">
                           <input
-                            className="htmlForm-control"
+                            className="form-control"
                             id="inputEmail"
                             type="email"
                             placeholder="name@example.com"
@@ -50,9 +50,9 @@ export const Register = () => {
                         </div>
                         <div className="row mb-3">
                           <div className="col-md-6">
-                            <div className="htmlForm-floating mb-3 mb-md-0">
+                            <div className="form-floating mb-3 mb-md-0">
                               <input
-                                className="htmlForm-control"
+                                className="form-control"
                                 id="inputPassword"
                                 type="password"
                                 placeholder="Create a password"
@@ -61,9 +61,9 @@ export const Register = () => {
                             </div>
                           </div>
                           <div className="col-md-6">
-                            <div className="htmlForm-floating mb-3 mb-md-0">
+                            <div className="form-floating mb-3 mb-md-0">
                               <input
-                                className="htmlForm-control"
+                                className="form-control"
                                 id="inputPasswordConfirm"
                                 type="password"
                                 placeholder="Confirm password"

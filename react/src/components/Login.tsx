@@ -15,33 +15,33 @@ export const Login = () => {
                     </div>
                     <div className="card-body">
                       <form>
-                        <div className="htmlForm-floating mb-3">
+                        <div className="form-floating mb-3">
                           <input
-                            className="htmlForm-control"
+                            className="form-control"
                             id="inputEmail"
                             type="email"
                             placeholder="name@example.com"
                           />
                           <label htmlFor="inputEmail">Email address</label>
                         </div>
-                        <div className="htmlForm-floating mb-3">
+                        <div className="form-floating mb-3">
                           <input
-                            className="htmlForm-control"
+                            className="form-control"
                             id="inputPassword"
                             type="password"
                             placeholder="Password"
                           />
                           <label htmlFor="inputPassword">Password</label>
                         </div>
-                        <div className="htmlForm-check mb-3">
+                        <div className="form-check mb-3">
                           <input
-                            className="htmlForm-check-input"
+                            className="form-check-input"
                             id="inputRememberPassword"
                             type="checkbox"
                             value=""
                           />
                           <label
-                            className="htmlForm-check-label"
+                            className="form-check-label"
                             htmlFor="inputRememberPassword"
                           >
                             Remember Password
