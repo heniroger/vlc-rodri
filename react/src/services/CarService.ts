@@ -1,4 +1,3 @@
-import { CarEntity } from './Entity';
 import AppAxiosInstance from "./AxiosInstance";
 
 

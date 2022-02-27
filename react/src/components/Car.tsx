@@ -1,19 +1,10 @@
 import { CarEntity } from "../services/Entity";
-import { Comment } from "./Comment";
 import { CommentForm } from "./CommentForm";
+import { CommentItems } from "./CommentItems";
 
 const Car = (props: CarEntity) => {
   const comments = props.comments;
-  const commentItems = comments.map((comment, index) => {
-    return (
-      <Comment
-        id={comment.id}
-        key={index}
-        content={comment.content}
-        user={comment.user}
-      />
-    );
-  });
+
   return (
     <>
       <div className="card mb-3 col-md-9 car">
@@ -31,7 +22,7 @@ const Car = (props: CarEntity) => {
           </p>
         </div>
 
-        <div>{commentItems}</div>
+        <CommentItems comments={comments} />
         <CommentForm />
       </div>
     </>

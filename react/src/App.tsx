@@ -3,7 +3,6 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import { getCars } from "./services/CarService";
 import { CarEntity } from "./services/Entity";
-import Car from "./components/Car";
 import { CarItems } from "./components/CartItems";
 
 function App() {

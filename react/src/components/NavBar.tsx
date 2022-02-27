@@ -53,7 +53,6 @@ const NavBar = () => {
       </nav>
       <Routes>
         <Route path="/login" element={Login} />
-
         <Route path="/register" element={Register} />
       </Routes>
     </Router>
