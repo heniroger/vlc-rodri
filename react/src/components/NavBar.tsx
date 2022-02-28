@@ -14,10 +14,18 @@ const NavBar = () => {
     setLoggedIn(token ? true : false);
   }, []);
 
+  let newCarLink = <></>;
   let loggedInLinks = <></>;
   let loggedOutLinks = <></>;
 
   if (loggedIn) {
+    newCarLink = (
+      <>
+        <Link to="/car/new" className="navbar-link">
+          Nouvelle voiture
+        </Link>
+      </>
+    );
     loggedInLinks = (
       <>
         <li>
@@ -51,11 +59,7 @@ const NavBar = () => {
         <Link to="/" className="navbar-brand ps-3">
           Start Bootstrap
         </Link>
-        <div className="navbar-links">
-          <Link to="/car/new" className="navbar-link">
-            Nouvelle voiture
-          </Link>
-        </div>
+        <div className="navbar-links">{newCarLink}</div>
 
         {/* Navbar */}
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
