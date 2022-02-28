@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { userRegister } from "../services/AuthService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -18,13 +20,12 @@ export const Register = () => {
       password: password,
     })
       .then((response) => {
-        console.log(response.data);
+        toast.success("Succès! Veuillez s'authentifier");
+        window.location.href = "/";
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.response.data);
       });
-
-    console.log(registeredUser);
 
     return undefined;
   };
@@ -39,6 +40,7 @@ export const Register = () => {
                 <div className="col-lg-7">
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     <div className="card-header">
+                      <ToastContainer />
                       <h3 className="text-center font-weight-light my-4">
                         Create Account
                       </h3>
