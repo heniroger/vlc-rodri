@@ -1,10 +1,49 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { CarForm } from "./CarForm";
 import { Home } from "./Home";
 import { Login } from "./Login";
+import { Logout } from "./Logout";
 import { Register } from "./Register";
 
 const NavBar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("tokenData");
+    setLoggedIn(token ? true : false);
+  }, []);
+
+  let loggedInLinks = <></>;
+  let loggedOutLinks = <></>;
+
+  if (loggedIn) {
+    loggedInLinks = (
+      <>
+        <li>
+          <a href="/logout" className="dropdown-item">
+            Logout
+          </a>
+        </li>
+      </>
+    );
+  } else {
+    loggedOutLinks = (
+      <>
+        <li>
+          <Link to="/login" className="dropdown-item">
+            Login
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/register" className="dropdown-item">
+            Register
+          </Link>
+        </li>
+      </>
+    );
+  }
   return (
     <Router>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -34,26 +73,12 @@ const NavBar = () => {
               className="dropdown-menu dropdown-menu-end"
               aria-labelledby="navbarDropdown"
             >
-              <li>
-                <Link to="/login" className="dropdown-item">
-                  Login
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/register" className="dropdown-item">
-                  Register
-                </Link>
-              </li>
+              {loggedInLinks}
 
               <li>
                 <hr className="dropdown-divider" />
               </li>
-              <li>
-                <a href="/" className="dropdown-item">
-                  Logout
-                </a>
-              </li>
+              {loggedOutLinks}
             </ul>
           </li>
         </ul>
@@ -63,6 +88,7 @@ const NavBar = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/car/new" element={<CarForm />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </Router>
   );
