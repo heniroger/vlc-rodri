@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { authenticationCheck } from "../services/AuthService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,12 +11,11 @@ export const Login = () => {
     e.preventDefault();
     const getLogin = authenticationCheck({ email: email, password: password })
       .then((response) => {
+        toast.success("Authentification avec succès! ");
         localStorage.setItem("tokenData", response.data);
-        window.document.location.href = "/";
+        window.location.href = "/";
       })
       .catch((error) => {
-        alert(error);
-        window.document.location.href = "/";
         console.log(error);
       });
   };
@@ -28,6 +29,7 @@ export const Login = () => {
                 <div className="col-lg-5">
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     <div className="card-header">
+                      <ToastContainer />
                       <h3 className="text-center font-weight-light my-4">
                         Login
                       </h3>
