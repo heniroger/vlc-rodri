@@ -134,11 +134,19 @@ class CarController extends AbstractController{
 
         $data = json_decode($request->getContent(), true);
 
+         /**
+        * @var  User
+        */
+        $user = $this->getUser();
+
         $comment= new Comment();
         $comment->setContent($data['content']);
         $comment->setCar($car);
         $car->getComments()->add($comment);
-        $comment->setUser($this->em->getRepository(User::class)->find($data['userId']));
+        $comment->setUser($user);
+
+         $this->em->persist($comment);
+        $this->em->flush();
 
         return new JsonResponse([
             "status" => Response::HTTP_OK,

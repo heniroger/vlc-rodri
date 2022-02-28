@@ -17,6 +17,7 @@ export const CommentForm = (props: {
     const commentedCar = addNewCommentToCar({
       id: props.carId,
       content: content,
+      token: localStorage.getItem("tokenData"),
     })
       .then((response) => {
         setLoadComments(true);
