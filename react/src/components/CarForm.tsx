@@ -6,33 +6,16 @@ export const CarForm = () => {
   const [mark, setMark] = useState("");
   const [description, setDescription] = useState("");
 
-  const toBase64 = (file: any) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-
-  const handleImageFile = async (e: any) => {
-    e.preventDefault();
-    const file = e.target.files[0];
-    // await toBase64(file).then((data) => {
-    //   if (typeof data === "string") {
-    //     setPhoto(data);
-    //   }
-    // });
-  };
   const submitForm = (e: any) => {
     e.preventDefault();
-
-    console.log(photo);
     const createdCar = addNewCar({
       photo: photo,
       mark: mark,
       description: description,
+      token: localStorage.getItem("tokenData"),
     })
       .then((response) => {
+        window.location.href = "/";
         console.log(response.data);
       })
       .catch((error) => {
@@ -67,12 +50,12 @@ export const CarForm = () => {
                               <input
                                 className="form-control"
                                 id="inputPhoto"
-                                type="file"
-                                placeholder="Upload your file"
+                                type="text"
+                                placeholder="https://www.domain.com/image/profile.png"
                                 value={photo}
-                                onChange={(e) => handleImageFile(e)}
+                                onChange={(e) => setPhoto(e.target.value)}
                               />
-                              <label htmlFor="inputPhoto">Image</label>
+                              <label htmlFor="inputPhoto">Image URL</label>
                             </div>
                           </div>
                           <div className="col-md-6">
