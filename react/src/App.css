@@ -1,6 +1,15 @@
 body{
   padding-top: 100px;
 }
+.navbar-links{
+    float: right;
+
+}
+.navbar-link{
+  color: white;
+  text-decoration: none;
+  float: right;
+}
 .App {
   text-align: center;
 }

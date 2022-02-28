@@ -32,7 +32,7 @@ class Comment{
     private $car;
      /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

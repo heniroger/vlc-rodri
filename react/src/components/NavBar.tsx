@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { CarForm } from "./CarForm";
 import { Home } from "./Home";
 import { Login } from "./Login";
 import { Register } from "./Register";
@@ -11,6 +12,12 @@ const NavBar = () => {
         <Link to="/" className="navbar-brand ps-3">
           Start Bootstrap
         </Link>
+        <div className="navbar-links">
+          <Link to="/car/new" className="navbar-link">
+            Nouvelle voiture
+          </Link>
+        </div>
+
         {/* Navbar */}
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li className="nav-item dropdown">
@@ -55,6 +62,7 @@ const NavBar = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/car/new" element={<CarForm />} />
       </Routes>
     </Router>
   );
