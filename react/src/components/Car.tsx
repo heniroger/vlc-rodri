@@ -7,6 +7,22 @@ import { CommentItems } from "./CommentItems";
 const Car = (props: CarEntity) => {
   const comments = props.comments;
   const [refreshComments, setRefreshCommets] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("tokenData");
+    setLoggedIn(token ? true : false);
+  }, []);
+
+  let commentBlock = <></>;
+  if (loggedIn) {
+    commentBlock = (
+      <>
+        <CommentItems comments={comments} />
+        <CommentForm carId={props.id} refreshComments={setRefreshCommets} />
+      </>
+    );
+  }
 
   useEffect(() => {
     props.refreshCars(true);
@@ -27,9 +43,7 @@ const Car = (props: CarEntity) => {
             </small>
           </p>
         </div>
-
-        <CommentItems comments={comments} />
-        <CommentForm carId={props.id} refreshComments={setRefreshCommets} />
+        {commentBlock}
       </div>
     </>
   );

@@ -12,7 +12,7 @@ export const Login = () => {
     const getLogin = authenticationCheck({ email: email, password: password })
       .then((response) => {
         toast.success("Authentification avec succès! ");
-        localStorage.setItem("tokenData", response.data);
+        localStorage.setItem("tokenData", response.data.token);
         window.location.href = "/";
       })
       .catch((error) => {
